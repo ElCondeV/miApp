@@ -1,0 +1,78 @@
+<!-- Componente raíz: contiene el menú lateral y el área de contenido -->
+
+<ion-app>
+
+  <!-- ion-menu: menú deslizante con estilo naval oscuro -->
+  <ion-menu contentId="main-content" type="overlay">
+
+    <ion-header>
+      <ion-toolbar style="--background:#0a1628; --color:white;">
+        <ion-title style="color:white; font-weight:700;">Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content style="--background:#0d1b2a;">
+
+      <!-- Encabezado del menú con logo UNETI -->
+      <div style="padding:24px 16px 16px 16px; text-align:center;
+                  border-bottom:1px solid rgba(255,255,255,0.08);">
+        
+        <p style="color:white; font-size:14px; font-weight:700; margin:0;">UNETI</p>
+        <p style="color:rgba(255,255,255,0.5); font-size:11px;
+                  margin:4px 0 0 0; letter-spacing:1px;">App Estudiantil</p>
+      </div>
+
+      <ion-list style="background:transparent; padding:12px 8px;">
+
+        <!-- Opción Inicio -->
+        <ion-item routerLink="/inicio" routerDirection="root"
+                  (click)="cerrarMenu()"
+                  style="--background:transparent; --background-hover:#162032;
+                         --color:white; --border-color:transparent;
+                         border-radius:10px; margin-bottom:4px;">
+          <ion-icon name="home-outline" slot="start"
+                    style="color:#4fc3f7;"></ion-icon>
+          <ion-label style="color:white; font-weight:500;">Inicio</ion-label>
+        </ion-item>
+
+        <!-- Opción Información personal -->
+        <ion-item routerLink="/informacion" routerDirection="root"
+                  (click)="cerrarMenu()"
+                  style="--background:transparent; --background-hover:#162032;
+                         --color:white; --border-color:transparent;
+                         border-radius:10px; margin-bottom:4px;">
+          <ion-icon name="person-outline" slot="start"
+                    style="color:#4fc3f7;"></ion-icon>
+          <ion-label style="color:white; font-weight:500;">
+            Información personal
+          </ion-label>
+        </ion-item>
+
+        <!-- Opción Contacto -->
+        <ion-item routerLink="/contacto" routerDirection="root"
+                  (click)="cerrarMenu()"
+                  style="--background:transparent; --background-hover:#162032;
+                         --color:white; --border-color:transparent;
+                         border-radius:10px; margin-bottom:4px;">
+          <ion-icon name="mail-outline" slot="start"
+                    style="color:#4fc3f7;"></ion-icon>
+          <ion-label style="color:white; font-weight:500;">Contacto</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+  <!-- Aquí se renderiza la página activa según la ruta -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <!-- Pie de página fijo en todas las pantallas -->
+  <div style="background:#0a1628; padding:10px 16px; text-align:center;
+              border-top:1px solid rgba(255,255,255,0.08);">
+    <p style="color:rgba(255,255,255,0.5); font-size:11px;
+              margin:0; letter-spacing:0.5px;">
+      Creado por <strong style="color:rgba(255,255,255,0.8);">Vladimir Rodriguez</strong>
+      &nbsp;·&nbsp; C.I. 29915065
+    </p>
+  </div>

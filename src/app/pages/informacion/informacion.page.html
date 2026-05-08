@@ -1,0 +1,99 @@
+<!-- Página de información personal: muestra los datos registrados del estudiante -->
+
+<ion-header>
+  <ion-toolbar style="--background:#0a1628; --color:white;">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color:white;">Información personal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#0f447c;">
+
+  <!-- Banner superior -->
+  <div style="background: linear-gradient(180deg, #1e3f5f 0%, #043a85 100%);
+              padding: 30px 24px 24px 24px; text-align:center;
+              border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <h1 style="color:white; font-size:28px; font-weight:900;
+               margin:0 0 6px 0; letter-spacing:-0.5px;">
+      Mi Perfil
+    </h1>
+    <p style="color:rgba(255,255,255,0.75); font-size:12px;
+              margin:0; letter-spacing:2px; text-transform:uppercase;">
+      Información personal
+    </p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center; padding:24px;">
+
+    <!-- Avatar con inicial -->
+    <div style="width:90px; height:90px; border-radius:50%;
+                background:linear-gradient(135deg, #1e3a5f, #2e5fa3);
+                display:flex; align-items:center; justify-content:center;
+                margin-bottom:12px;
+                box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+      <span style="color:white; font-size:36px; font-weight:700;">
+        {{ estudianteService.datos.nombre ?
+           estudianteService.datos.nombre.charAt(0).toUpperCase() : '?' }}
+      </span>
+    </div>
+
+    <!-- Nombre -->
+    <h2 style="color:white; font-size:22px; font-weight:800;
+               margin:0 0 4px 0; text-align:center;">
+      {{ estudianteService.datos.nombre || 'Sin registrar' }}
+    </h2>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px;
+              margin:0 0 24px 0; letter-spacing:1px; text-transform:uppercase;">
+      Estudiante UNETI
+    </p>
+
+    <!-- Tarjeta con datos -->
+    <div style="width:100%; max-width:380px; background:white;
+                border-radius:16px; overflow:hidden;
+                box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+
+      <!-- Fila carrera -->
+      <div style="display:flex; align-items:center; padding:16px;
+                  border-bottom:1px solid #f0f0f0;">
+       
+        <div>
+          <p style="font-size:11px; color:#888; margin:0; text-transform:uppercase;
+                    letter-spacing:0.5px;">Carrera</p>
+          <p style="font-size:15px; font-weight:600; color:#1e3a5f; margin:4px 0 0 0;">
+            {{ estudianteService.datos.carrera || 'Sin registrar' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Fila correo -->
+      <div style="display:flex; align-items:center; padding:16px;
+                  border-bottom:1px solid #f0f0f0;">
+        
+        <div>
+          <p style="font-size:11px; color:#888; margin:0; text-transform:uppercase;
+                    letter-spacing:0.5px;">Correo</p>
+          <p style="font-size:15px; font-weight:600; color:#1e3a5f; margin:4px 0 0 0;">
+            {{ estudianteService.datos.correo || 'Sin registrar' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Fila teléfono -->
+      <div style="display:flex; align-items:center; padding:16px;">
+        
+        <div>
+          <p style="font-size:11px; color:#888; margin:0; text-transform:uppercase;
+                    letter-spacing:0.5px;">Teléfono</p>
+          <p style="font-size:15px; font-weight:600; color:#1e3a5f; margin:4px 0 0 0;">
+            {{ estudianteService.datos.telefono || 'Sin registrar' }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

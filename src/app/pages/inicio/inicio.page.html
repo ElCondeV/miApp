@@ -1,0 +1,148 @@
+<!-- Página de inicio: bienvenida y formulario de registro -->
+
+<ion-header>
+  <ion-toolbar style="--background:#0a1628; --color:white;">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color:rgb(255, 255, 255);">Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:#0f447c;">
+
+  <!-- Banner superior naval -->
+  <div style="background: linear-gradient(180deg, #1e3f5f 0%, #043a85 100%);
+              padding: 50px 24px 40px 24px; text-align:center;
+              border-bottom: 1px solid rgba(255,255,255,0.08);">
+
+    <h1 style="color:white; font-size:46px; font-weight:900;
+               margin:0 0 10px 0; letter-spacing:-1px; line-height:1.1;">
+      ¡Bienvenido!
+    </h1>
+    <p style="color:rgba(255,255,255,0.75); font-size:12px;
+              margin:0; letter-spacing:3px; text-transform:uppercase;">
+      Estudiante<br>de la UNETI
+    </p>
+  </div>
+
+  <div style="padding:24px; display:flex; flex-direction:column; align-items:center;">
+
+    <!-- FORMULARIO DE REGISTRO centrado -->
+    <div *ngIf="!estudianteService.estaRegistrado()"
+         style="width:100%; max-width:380px;">
+
+      <!-- Tarjeta blanca del formulario -->
+      <div style="background:white; border-radius:16px; padding:24px;
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+
+        <h2 style="font-size:20px; font-weight:800; color:#1e3a5f;
+                   margin:0 0 4px 0; text-align:center;">Entrar al sistema</h2>
+        <p style="font-size:13px; color:#000000; margin:0 0 24px 0; text-align:center;">
+          Completa tus datos para continuar
+        </p>
+
+        <!-- Campo nombre -->
+        <div style="margin-bottom:12px;">
+          <ion-item style="--background:#f8f9fa; --border-radius:10px;
+                           --border-color:#e0e0e0; --border-width:1px;
+                           --border-style:solid; --color:#1e3a5f;">
+            <ion-icon name="person-outline" slot="start"
+                      style="color:#2e5fa3;"></ion-icon>
+            <ion-label position="floating"
+                       style="color:#000000;">Nombre completo</ion-label>
+            <ion-input [(ngModel)]="nombre" type="text"
+                       style="color:#111;"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Campo carrera -->
+        <div style="margin-bottom:12px;">
+          <ion-item style="--background:#f8f9fa; --border-radius:10px;
+                           --border-color:#e0e0e0; --border-width:1px;
+                           --border-style:solid; --color:#1e3a5f;">
+            <ion-icon name="school-outline" slot="start"
+                      style="color:#2e5fa3;"></ion-icon>
+            <ion-label position="floating"
+                       style="color:#000000;">Carrera</ion-label>
+            <ion-input [(ngModel)]="carrera" type="text"
+                       style="color:#111;"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Campo correo -->
+        <div style="margin-bottom:12px;">
+          <ion-item style="--background:#f8f9fa; --border-radius:10px;
+                           --border-color:#e0e0e0; --border-width:1px;
+                           --border-style:solid; --color:#1e3a5f;">
+            <ion-icon name="mail-outline" slot="start"
+                      style="color:#2e5fa3;"></ion-icon>
+            <ion-label position="floating"
+                       style="color:#000000;">Correo electrónico</ion-label>
+            <ion-input [(ngModel)]="correo" type="email"
+                       style="color:#111;"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Campo teléfono -->
+        <div style="margin-bottom:24px;">
+          <ion-item style="--background:#f8f9fa; --border-radius:10px;
+                           --border-color:#e0e0e0; --border-width:1px;
+                           --border-style:solid; --color:#1e3a5f;">
+            <ion-icon name="call-outline" slot="start"
+                      style="color:#2e5fa3;"></ion-icon>
+            <ion-label position="floating"
+                       style="color:#000000;">Teléfono</ion-label>
+            <ion-input [(ngModel)]="telefono" type="tel"
+                       style="color:#111;"></ion-input>
+          </ion-item>
+        </div>
+
+        <!-- Botón acceder -->
+        <ion-button expand="block" (click)="registrar()"
+                    style="--background:#1e3a5f; --background-activated:#152d4a;
+                           --border-radius:10px; --color:white;
+                           font-weight:700; font-size:15px; height:48px;">
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+          Acceder
+        </ion-button>
+
+      </div>
+    </div>
+
+    <!-- BIENVENIDA PERSONALIZADA después del registro -->
+    <div *ngIf="estudianteService.estaRegistrado()"
+         style="width:100%; max-width:380px;">
+
+      <div style="background:rgb(226, 233, 247); border-radius:16px; padding:28px;
+                  box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align:center;">
+
+        <!-- Avatar con inicial -->
+        <div style="width:80px; height:80px; border-radius:50%;
+                    background: linear-gradient(135deg, #1e3a5f, #2e5fa3);
+                    display:flex; align-items:center; justify-content:center;
+                    margin:0 auto 16px auto;">
+          <span style="color:white; font-size:32px; font-weight:700;">
+            {{ estudianteService.datos.nombre.charAt(0).toUpperCase() }}
+          </span>
+        </div>
+
+        <h2 style="font-size:20px; font-weight:700; color:#1e3a5f; margin:0 0 4px 0;">
+          {{ estudianteService.datos.nombre }}
+        </h2>
+        <p style="color:#888; font-size:13px; margin:0 0 4px 0;">
+          {{ estudianteService.datos.carrera }}
+        </p>
+        <p style="color:#2e5fa3; font-size:13px; font-weight:500; margin:0 0 4px 0;">
+          {{ estudianteService.datos.correo }}
+        </p>
+        <p style="color:#555; font-size:13px; margin:0;">
+          {{ estudianteService.datos.telefono }}
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
