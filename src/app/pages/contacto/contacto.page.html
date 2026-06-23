@@ -129,6 +129,16 @@
           {{ m.mensaje }}
         </p>
 
+    <!-- BOTÓN NUEVO: llama a eliminar() pasando el índice i del *ngFor -->
+        <ion-button
+          expand="block"
+          (click)="eliminar(i)"
+          style="--background:#c0392b; --border-radius:8px;
+                 --color:white; font-size:13px; height:36px; margin-top:10px;">
+          <ion-icon name="trash-outline" slot="start"></ion-icon>
+          Eliminar mensaje
+        </ion-button>
+        
       </div>
 
     </div>

@@ -53,5 +53,13 @@ export class ContactoPage {
     this.nombre = '';
     this.correo = '';
     this.mensaje = '';
+    
+   
+  }
+    // ─── FUNCIÓN NUEVA ───────────────────────────────────────
+  // Recibe el índice del mensaje a borrar desde el *ngFor del HTML
+  // splice(indice, 1) elimina exactamente 1 elemento en esa posición
+  eliminar(indice: number) {
+    this.mensajesEnviados.splice(indice, 1);
   }
 }
